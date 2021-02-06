@@ -27,11 +27,11 @@ class ScrollingActivity : AppCompatActivity() {
 
 
         for (n in 0..100) {
-            products.add(Product("Продукты", "https://via.placeholder.com/350x350", 100.0))
+            products.add(Product("Продукты", "https://via.placeholder.com/350x350", 100.0)) // Цикл Product из DATA
         }
 
         recycler_View.apply {
-            layoutManager = GridLayoutManager(this@ScrollingActivity,2)  // Количество столбцов spanCount = 2
+            layoutManager = GridLayoutManager(this@ScrollingActivity,2)  // recycler_View Количество столбцов spanCount = 2 . GridLayoutManager - МЕНЕДЖЕР СЕТКИ
             adapter = ProductsAdapter(products)
         }
     }

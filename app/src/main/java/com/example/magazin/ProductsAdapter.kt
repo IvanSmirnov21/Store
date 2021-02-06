@@ -12,9 +12,9 @@ import com.squareup.picasso.Picasso
 class ProductsAdapter (private val products: ArrayList<Product> ): RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ProductsAdapter.ViewHolder, position: Int) {
         val product = products[position]
-        Picasso.get().load(product.photoUrl).into(holder.image)
+        Picasso.get().load(product.photoUrl).into(holder.image) // библиотека Picasso ( Отображение картинок по URL)
         holder.title.text = product.title
-        holder.price.text = product.price.toString()
+        holder.price.text = product.price.toString() // Почему то, без toString не пашет, при том что title работает.
     }
 
 
