@@ -24,7 +24,7 @@ class ProductsAdapter (private val products: ArrayList<Product> ): RecyclerView.
         return ViewHolder(view)
     }
 
-    override fun getItemCount () = products.size
+    override fun getItemCount () = products.size  // должно ограничивать количество ViewHolder, надо разобраться.
 
 
     class ViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView) {
