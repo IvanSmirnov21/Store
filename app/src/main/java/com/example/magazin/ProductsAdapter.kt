@@ -24,7 +24,7 @@ class ProductsAdapter (private val products: ArrayList<Product> ): RecyclerView.
         val view = LayoutInflater.from(parent.context).inflate(R.layout.product_row,parent,false)
         view.setOnClickListener() { // Клик на view
             val intent = Intent(parent.context, ProductDetails::class.java) // Намерение в контексте, -> ProductDetails
-            parent.context.startActivities(arrayOf(intent))
+            parent.context.startActivities(arrayOf(intent)) //Запуск Activities
         }
         return ViewHolder(view) // Возвращает ViewHolder с параметрами view
     }
