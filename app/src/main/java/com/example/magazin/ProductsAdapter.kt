@@ -1,5 +1,6 @@
 package com.example.magazin
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,11 @@ class ProductsAdapter (private val products: ArrayList<Product> ): RecyclerView.
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.product_row,parent,false)
-        return ViewHolder(view)
+        view.setOnClickListener() { // Клик на view
+            val intent = Intent(parent.context, ProductDetails::class.java) // Намерение в контексте, -> ProductDetails
+            parent.context.startActivities(arrayOf(intent))
+        }
+        return ViewHolder(view) // Возвращает ViewHolder с параметрами view
     }
 
     override fun getItemCount () = products.size  // должно ограничивать количество ViewHolder, надо разобраться.
