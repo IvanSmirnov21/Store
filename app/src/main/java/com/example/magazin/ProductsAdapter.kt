@@ -22,11 +22,13 @@ class ProductsAdapter (private val products: ArrayList<Product> ): RecyclerView.
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.product_row,parent,false)
+        val holder = ViewHolder(view) //   ViewHolder с параметрами view
         view.setOnClickListener() { // Клик на view
             val intent = Intent(parent.context, ProductDetails::class.java) // Намерение в контексте, -> ProductDetails
+            intent.putExtra("title", products[holder.adapterPosition].title) //намерение передачи между экранами с ключем title и значением products[holder.adapterPosition].title
             parent.context.startActivities(arrayOf(intent)) //Запуск Activities
         }
-        return ViewHolder(view) // Возвращает ViewHolder с параметрами view
+        return holder // возвращает ViewHolder с параметрами view
     }
 
     override fun getItemCount () = products.size  // должно ограничивать количество ViewHolder, надо разобраться.

@@ -27,7 +27,7 @@ class ScrollingActivity : AppCompatActivity() {
 
 
         for (n in 0..100) {
-            products.add(Product("Продукты", "https://via.placeholder.com/350x350", 100.0)) // Цикл Product из DATA
+            products.add(Product("Продукты #$n", "https://via.placeholder.com/350x350", 100.0)) // Цикл Product из DATA
         }
 
         recycler_View.apply {
