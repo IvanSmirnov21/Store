@@ -5,8 +5,16 @@
 
     <group android:checkableBehavior="single">
 
+
+        <item
+            android:id="@+id/action_home"
+            android:orderInCategory="100"
+            android:title="settings"
+            android:icon="@drawable/ic_round_attach_money_24"
+            app:showAsAction="never" />
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/pork"
         android:orderInCategory="100"
         android:title="Свинина"
         android:icon="@drawable/ic_round_attach_money_24"
@@ -14,21 +22,21 @@
 
 
     <item
-        android:id="@+id/action_settings2"
+        android:id="@+id/Chicken_And_Turkey"
         android:orderInCategory="100"
         android:title="Курица и индейка"
         android:icon="@drawable/ic_round_attach_money_24"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_settings3"
+        android:id="@+id/seafood"
         android:orderInCategory="100"
         android:title="Морепродукты"
         android:icon="@drawable/ic_round_attach_money_24"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_settings4"
+        android:id="@+id/related_products"
         android:orderInCategory="100"
         android:title="Сопутствующие товары"
         android:icon="@drawable/ic_round_attach_money_24"

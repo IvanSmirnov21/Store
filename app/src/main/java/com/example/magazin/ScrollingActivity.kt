@@ -1,9 +1,12 @@
 package com.example.magazin
 
 import android.os.Bundle
+import android.util.Log.d
+import android.util.Log.i
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.magazin.data.Product
 import com.google.android.material.appbar.CollapsingToolbarLayout
@@ -25,6 +28,17 @@ class ScrollingActivity : AppCompatActivity() {
         }
 
         navigation_view.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.action_home -> i("ivan" , "Дом")
+                R.id.Chicken_And_Turkey -> {
+                    supportFragmentManager.beginTransaction()
+                            .replace(R.id.frame_layout, ChickenFragment())
+                            .commit()  //запуск фрагмента курицы и индейки
+                    i("ivan" , "Курица")
+                }
+                R.id.seafood -> i("ivan" , "Морепродукты")
+                R.id.related_products -> i("ivan" , "Другие продукты")
+            }
             it.isChecked = true // isChecked - состояние выбраного объекта, setNavigationItemSelectedListener - получает уведомление при нажатии на меню.
             drawerLayout.closeDrawers() // Закрытие навигационного меню при нажатии.
             true
@@ -48,22 +62,9 @@ class ScrollingActivity : AppCompatActivity() {
         }
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_scrolling, menu)
-        return true
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-
+        drawerLayout.openDrawer(GravityCompat.START) // открывает меню ActionBar drawerLayout
+        return true
+       // return super.onOptionsItemSelected(item)
     }
 }
