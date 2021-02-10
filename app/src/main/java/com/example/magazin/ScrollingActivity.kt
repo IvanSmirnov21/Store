@@ -1,14 +1,15 @@
 package com.example.magazin
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.magazin.data.Product
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.magazin.data.Product
+import kotlinx.android.synthetic.main.activity_scrolling.*
 import kotlinx.android.synthetic.main.content_scrolling.*
 
 class ScrollingActivity : AppCompatActivity() {
@@ -21,6 +22,17 @@ class ScrollingActivity : AppCompatActivity() {
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+        }
+
+        navigation_view.setNavigationItemSelectedListener {
+            it.isChecked = true // isChecked - состояние выбраного объекта, setNavigationItemSelectedListener - получает уведомление при нажатии на меню.
+            drawerLayout.closeDrawers() // Закрытие навигационного меню
+            true
+        }
+
+        supportActionBar?. apply {
+            setDisplayHomeAsUpEnabled(true)   // Добавляет меню ActionBar
+            setHomeAsUpIndicator(R.drawable.ic_sharp_dehaze_24) // картинка меню
         }
 
         val products = arrayListOf<Product>()

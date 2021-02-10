@@ -2,9 +2,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.magazin.ScrollingActivity">
+
+    <group android:checkableBehavior="single">
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Свинина"
+        android:icon="@drawable/ic_round_attach_money_24"
         app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/action_settings2"
+        android:orderInCategory="100"
+        android:title="Курица и индейка"
+        android:icon="@drawable/ic_round_attach_money_24"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_settings3"
+        android:orderInCategory="100"
+        android:title="Морепродукты"
+        android:icon="@drawable/ic_round_attach_money_24"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_settings4"
+        android:orderInCategory="100"
+        android:title="Сопутствующие товары"
+        android:icon="@drawable/ic_round_attach_money_24"
+        app:showAsAction="never" />
+
+    </group>
+
+
 </menu>
