@@ -26,18 +26,30 @@ class ScrollingActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+        supportFragmentManager.beginTransaction().replace(R.id.frame_layout, MainFragment()).commit()
 
         navigation_view.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.action_home -> i("ivan" , "Дом")
+                R.id.action_home -> {
+                    supportFragmentManager.beginTransaction()
+                            .replace(R.id.frame_layout, MainFragment())
+                            .commit()  //запуск фрагмента дома
+                }
                 R.id.Chicken_And_Turkey -> {
                     supportFragmentManager.beginTransaction()
                             .replace(R.id.frame_layout, ChickenFragment())
                             .commit()  //запуск фрагмента курицы и индейки
-                    i("ivan" , "Курица")
                 }
-                R.id.seafood -> i("ivan" , "Морепродукты")
-                R.id.related_products -> i("ivan" , "Другие продукты")
+                R.id.seafood -> {
+                    supportFragmentManager.beginTransaction()
+                            .replace(R.id.frame_layout, ChickenFragment())
+                            .commit()  //запуск морепродуктов
+                }
+                R.id.related_products -> {
+                    supportFragmentManager.beginTransaction()
+                            .replace(R.id.frame_layout, ChickenFragment())
+                            .commit()  //запуск фрагмента остальных продуктов
+                }
             }
             it.isChecked = true // isChecked - состояние выбраного объекта, setNavigationItemSelectedListener - получает уведомление при нажатии на меню.
             drawerLayout.closeDrawers() // Закрытие навигационного меню при нажатии.
@@ -49,17 +61,7 @@ class ScrollingActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.ic_sharp_dehaze_24) // картинка меню
         }
 
-        val products = arrayListOf<Product>()
 
-
-        for (n in 0..100) {
-            products.add(Product("Продукты #$n", "https://via.placeholder.com/350x350", 100.0)) // Цикл Product из DATA
-        }
-
-        recycler_View.apply {
-            layoutManager = GridLayoutManager(this@ScrollingActivity,2)  // recycler_View Количество столбцов spanCount = 2 . GridLayoutManager - МЕНЕДЖЕР СЕТКИ
-            adapter = ProductsAdapter(products)
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -9,7 +9,7 @@
         <item
             android:id="@+id/action_home"
             android:orderInCategory="100"
-            android:title="settings"
+            android:title="Главная страница"
             android:icon="@drawable/ic_round_attach_money_24"
             app:showAsAction="never" />
 
