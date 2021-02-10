@@ -26,7 +26,7 @@ class ScrollingActivity : AppCompatActivity() {
 
         navigation_view.setNavigationItemSelectedListener {
             it.isChecked = true // isChecked - состояние выбраного объекта, setNavigationItemSelectedListener - получает уведомление при нажатии на меню.
-            drawerLayout.closeDrawers() // Закрытие навигационного меню
+            drawerLayout.closeDrawers() // Закрытие навигационного меню при нажатии.
             true
         }
 
