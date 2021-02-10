@@ -32,17 +32,22 @@ class ScrollingActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.action_home -> {
                     supportFragmentManager.beginTransaction()
-                            .replace(R.id.frame_layout, MainFragment())
-                            .commit()  //запуск фрагмента дома
+                            .replace(R.id.frame_layout, MainFragment())  //frame_layout в fragment_main
+                            .commit()  //запуск фрагмента главной страницы
                 }
                 R.id.Chicken_And_Turkey -> {
                     supportFragmentManager.beginTransaction()
                             .replace(R.id.frame_layout, ChickenFragment())
                             .commit()  //запуск фрагмента курицы и индейки
                 }
+                R.id.pork -> {
+                    supportFragmentManager.beginTransaction()
+                            .replace(R.id.frame_layout, PorkFragment())
+                            .commit()  //запуск морепродуктов
+                }
                 R.id.seafood -> {
                     supportFragmentManager.beginTransaction()
-                            .replace(R.id.frame_layout, ChickenFragment())
+                            .replace(R.id.frame_layout, PorkFragment())
                             .commit()  //запуск морепродуктов
                 }
                 R.id.related_products -> {
