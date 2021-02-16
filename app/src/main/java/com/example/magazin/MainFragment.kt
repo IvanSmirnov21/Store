@@ -34,7 +34,7 @@ class MainFragment: Fragment(), CoroutineScope {
             val json = URL("https://gist.githubusercontent.com/IvanSmirnov21/e5e95a599cc43675abaf167984cb201b/raw/2d54bac3bf8fe41f3996b3fc9cf9387ed45f388a/shopping_products.json").readText()
            // runOnUiThread {
                 d("ivan", "json: $json")
-                val products = Gson().fromJson(json, Array<Product>::class.java).toList()
+                val products = Gson().fromJson(json, Array<Product>::class.java).toList() //гугловский gson
             // Исполнение кода в служебном потоке, визуал в главном потоке, иначе приложение крашится!!!
             launch(Dispatchers.Main) {
                 root.recycler_View.apply {
