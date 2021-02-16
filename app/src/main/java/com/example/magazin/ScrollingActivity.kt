@@ -32,7 +32,7 @@ class ScrollingActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.action_home -> {
                     supportFragmentManager.beginTransaction()
-                            .replace(R.id.frame_layout, MainFragment())  //frame_layout в fragment_main
+                            .replace(R.id.frame_layout, MainFragment())  //frame_layout в MainFragment
                             .commit()  //запуск фрагмента главной страницы
                 }
                 R.id.Chicken_And_Turkey -> {
