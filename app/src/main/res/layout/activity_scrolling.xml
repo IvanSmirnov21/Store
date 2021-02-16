@@ -13,6 +13,7 @@
         layout="@layout/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <!-- вставка контента из main -->
 
 
     <com.google.android.material.navigation.NavigationView
