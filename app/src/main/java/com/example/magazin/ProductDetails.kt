@@ -12,12 +12,10 @@ class ProductDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.product_details)
         val title = intent.getStringExtra("title") // getStringExtra принимает намерение с ключем title
-        product_name.text = title  // описание продукта TextView = намерению
-        Availability.setOnClickListener {
-            AlertDialog.Builder (this)
-                    .setMessage("В наличии")
-                    .setPositiveButton("OK") { dialog, which ->  }.create().show()
-        }
+        supportFragmentManager.beginTransaction().replace(R.id.prod, GroceryFragment()).commit()
+
+
+
 
 
     }

@@ -28,6 +28,9 @@ class ScrollingActivity : AppCompatActivity() {
         }
         supportFragmentManager.beginTransaction().replace(R.id.frame_layout, MainFragment()).commit()
 
+
+
+
         navigation_view.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_home -> {

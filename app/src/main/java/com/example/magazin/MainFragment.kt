@@ -40,6 +40,9 @@ class MainFragment: Fragment(), CoroutineScope {
                 root.recycler_View.apply {
                     layoutManager = GridLayoutManager(activity, 2)  // recycler_View Количество столбцов spanCount = 2 . GridLayoutManager - МЕНЕДЖЕР СЕТКИ, root - ссылка на fragment_main
                     adapter = ProductsAdapter(products)
+
+
+
                 }
                 }
         }
