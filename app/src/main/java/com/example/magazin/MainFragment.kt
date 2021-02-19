@@ -44,11 +44,7 @@ class MainFragment: Fragment(), CoroutineScope {
                 }
         }
 
-
-       // }
-
-
-
+        
         return root
     }
 
