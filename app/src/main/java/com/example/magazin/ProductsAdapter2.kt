@@ -22,7 +22,7 @@ class ProductsAdapter2 (private val products: List<ProductDescription> ): Recycl
         val view = LayoutInflater.from(parent.context).inflate(R.layout.grocery_list,parent,false)
         val holder = ViewHolder(view) //   ViewHolder с параметрами view
         view.setOnClickListener() { // Клик на view
-            val intent = Intent(parent.context, ProductDescription::class.java) // Намерение в контексте, -> ProductDetails
+            val intent = Intent(parent.context, ProductSpecification::class.java) // Намерение в контексте, -> ProductDetails
             intent.putExtra("title2", products[holder.adapterPosition].description) //намерение передачи между экранами с ключем title и значением products[holder.adapterPosition].title
             parent.context.startActivities(arrayOf(intent)) //Запуск Activities
         }

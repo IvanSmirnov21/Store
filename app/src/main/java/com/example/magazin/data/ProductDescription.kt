@@ -3,7 +3,7 @@ package com.example.magazin.data
 import com.google.gson.annotations.SerializedName
 
 data class ProductDescription(
-    @SerializedName("description")
+
     val description : String,
 
     val description_size: Int,

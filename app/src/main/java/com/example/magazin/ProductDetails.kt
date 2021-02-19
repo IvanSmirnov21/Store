@@ -11,7 +11,7 @@ class ProductDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.product_details)
-        val title = intent.getStringExtra("title") // getStringExtra принимает намерение с ключем title
+        //val title = intent.getStringExtra("title") // getStringExtra принимает намерение с ключем title
         supportFragmentManager.beginTransaction().replace(R.id.prod, GroceryFragment()).commit()
 
 

@@ -36,7 +36,7 @@ class ProductsAdapter (private val products: List<Product> ): RecyclerView.Adapt
 
 
             val intent = Intent(parent.context, ProductDetails::class.java) // Намерение в контексте, -> ProductDetails
-            intent.putExtra("title", products[holder.adapterPosition].title) //намерение передачи между экранами с ключем title и значением products[holder.adapterPosition].title
+            //intent.putExtra("title", products[holder.adapterPosition].title) //намерение передачи между экранами с ключем title и значением products[holder.adapterPosition].title
             parent.context.startActivities(arrayOf(intent)) //Запуск Activities
         }
         return holder // возвращает ViewHolder с параметрами view
