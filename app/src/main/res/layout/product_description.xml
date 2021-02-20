@@ -10,7 +10,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="TextView5"
         tools:layout_editor_absoluteX="250dp"
         tools:layout_editor_absoluteY="283dp"
         app:layout_constraintStart_toStartOf="parent"
