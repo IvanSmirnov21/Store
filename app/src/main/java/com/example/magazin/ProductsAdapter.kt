@@ -1,10 +1,12 @@
 package com.example.magazin
 
 import android.content.Intent
+import android.icu.text.Transliterator
 import android.sax.StartElementListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
@@ -12,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magazin.data.Product
 import com.squareup.picasso.Picasso
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.fragmentTabHost
 
 class ProductsAdapter (private val products: List<Product> ): RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
@@ -19,15 +22,24 @@ class ProductsAdapter (private val products: List<Product> ): RecyclerView.Adapt
         val product = products[position]
         Picasso.get().load(product.photoUrl).into(holder.image) // библиотека Picasso ( Отображение картинок по URL)
         holder.title.text = product.title
-        holder.price.text = product.price.toString()
+        //holder.price.text = product.price.toString()
+
+
+
+
+
+
     }
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.product_row,parent,false)
-        val holder = ViewHolder(view) //   ViewHolder с параметрами view
-        view.setOnClickListener {
+        val holder = ViewHolder(view) // // //  ViewHolder с параметрами view
+
+
+
+        view.setOnClickListener() {
 
 
 
@@ -36,7 +48,8 @@ class ProductsAdapter (private val products: List<Product> ): RecyclerView.Adapt
 
 
             val intent = Intent(parent.context, ProductDetails::class.java) // Намерение в контексте, -> ProductDetails
-            //intent.putExtra("title", products[holder.adapterPosition].title) //намерение передачи между экранами с ключем title и значением products[holder.adapterPosition].title
+            intent.putExtra("title", products[holder.adapterPosition].description) //намерение передачи между экранами с ключем title и значением products[holder.adapterPosition].title
+            intent.putExtra("price",products[holder.adapterPosition].price.toString())
             parent.context.startActivities(arrayOf(intent)) //Запуск Activities
         }
         return holder // возвращает ViewHolder с параметрами view

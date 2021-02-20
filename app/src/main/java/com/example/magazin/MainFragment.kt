@@ -31,7 +31,7 @@ class MainFragment: Fragment(), CoroutineScope {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
         launch() {
             //  launch() - можно поток определить в скобках, тут получаеться IO по умолчанию
-            val json = URL("https://gist.githubusercontent.com/IvanSmirnov21/e5e95a599cc43675abaf167984cb201b/raw/2d54bac3bf8fe41f3996b3fc9cf9387ed45f388a/shopping_products.json").readText()
+            val json = URL("https://gist.githubusercontent.com/IvanSmirnov21/e5e95a599cc43675abaf167984cb201b/raw/f9cb72b550e081c813ddc4a06cfd508c8375569e/shopping_products.json").readText()
                 d("ivan", "json: $json")
                 val products = Gson().fromJson(json, Array<Product>::class.java).toList() //гугловский gson
 
