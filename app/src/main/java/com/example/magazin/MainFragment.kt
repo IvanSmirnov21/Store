@@ -13,6 +13,7 @@ import com.example.magazin.data.Product
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.internal.bind.TypeAdapters.URL
+import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,30 +26,51 @@ import org.jetbrains.anko.support.v4.uiThread
 import java.net.URL
 import kotlin.coroutines.CoroutineContext
 
-class MainFragment: Fragment(), CoroutineScope {
+class MainFragment : Fragment(), CoroutineScope {
     override val coroutineContext = Dispatchers.IO
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
-        launch() {
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        launch {
             //  launch() - можно поток определить в скобках, тут получаеться IO по умолчанию
-            val json = URL("https://gist.githubusercontent.com/IvanSmirnov21/e5e95a599cc43675abaf167984cb201b/raw/2d54bac3bf8fe41f3996b3fc9cf9387ed45f388a/shopping_products.json").readText()
-                d("ivan", "json: $json")
-                val products = Gson().fromJson(json, Array<Product>::class.java).toList() //гугловский gson
+            val json =
+                URL("https://gist.githubusercontent.com/IvanSmirnov21/e5e95a599cc43675abaf167984cb201b/raw/2d54bac3bf8fe41f3996b3fc9cf9387ed45f388a/shopping_products.json").readText()
+            d("ivan", "json: $json")
+            val products =
+                Gson().fromJson(json, Array<Product>::class.java).toList() //гугловский gson
 
             //coroutine, Исполнение служебного кода в служебном потоке, визуал в главном потоке, иначе приложение крашится!!!
             launch(Dispatchers.Main) {
-                root.recycler_View.apply {
-                    layoutManager = GridLayoutManager(activity, 2)  // recycler_View Количество столбцов spanCount = 2 . GridLayoutManager - МЕНЕДЖЕР СЕТКИ, root - ссылка на fragment_main
-                    adapter = ProductsAdapter(products)
-
-
+                recycler_View.apply {
+                    layoutManager = GridLayoutManager(
+                        activity,
+                        2
+                    )  // recycler_View Количество столбцов spanCount = 2 . GridLayoutManager - МЕНЕДЖЕР СЕТКИ, root - ссылка на fragment_main
+                    adapter = ProductsAdapter(products) { productTitle ->
+                        fragmentManager?.beginTransaction()
+                            ?.replace(
+                                R.id.frame_layout,
+                                GroceryFragment().also {
+                                    it.arguments = Bundle().also {
+                                        it.putString("product_title", productTitle)
+                                    }
+                                }
+                            )
+                            ?.commit()
+                    }
 
                 }
-                }
+            }
         }
-
-        
-        return root
     }
+
 
 }

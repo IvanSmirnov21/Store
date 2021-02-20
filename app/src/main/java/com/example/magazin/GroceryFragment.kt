@@ -13,6 +13,7 @@ import com.example.magazin.data.Product
 import com.example.magazin.data.ProductDescription
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_main.view.*
+import kotlinx.android.synthetic.main.product_details.*
 import kotlinx.android.synthetic.main.product_details.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,8 +22,14 @@ import java.net.URL
 
 class GroceryFragment: Fragment(), CoroutineScope {
     override val coroutineContext = Dispatchers.IO
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root2 = inflater.inflate(R.layout.product_details, container, false)
+        return root2
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val productTitle = arguments?.getString("product_title") ?: ""
         launch() {
             //  launch() - можно поток определить в скобках, тут получаеться IO по умолчанию
             val json2 = URL("https://gist.githubusercontent.com/IvanSmirnov21/831031e31488fc0865f3752e2c84beda/raw/1e0e7ce2cab53f7ae10a4401c91499af8bf9dd36/description_products.json").readText()
@@ -31,7 +38,7 @@ class GroceryFragment: Fragment(), CoroutineScope {
 
             //coroutine, Исполнение служебного кода в служебном потоке, визуал в главном потоке, иначе приложение крашится!!!
             launch(Dispatchers.Main) {
-                root2.recycler_View2.apply {
+                recycler_View2.apply {
                     layoutManager = LinearLayoutManager(activity)
                     adapter = ProductsAdapter2(products)
 
@@ -39,11 +46,6 @@ class GroceryFragment: Fragment(), CoroutineScope {
                 }
             }
         }
-
-
-        return root2
-
     }
-
 
 }
